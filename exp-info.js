@@ -195,8 +195,8 @@ function setTableData( inTbl, inDate, inDay ){
 				var celchr=rows[cnt].insertCell(-1);
 				var imgTag = document.createElement("img");
 				imgTag.src = "icon/" + chrTable[i][4];
-				imgTag.width = 86;
-				imgTag.height = 86;
+				imgTag.width = 90;
+				imgTag.height = 90;
 				celchr.setAttribute("rowSpan", 4);
 				celchr.appendChild(imgTag);
 
