@@ -31,7 +31,7 @@
 //	[	23,	"コニィ・ヒロタ",			2,	"SR",	"23_Conny.png"],
 	[	24,	"リン・ハヤシ",				0,	"SR",	"24_Rynn.png"],
 	[	25,	"プリミュラ・コノエ",		2,	"SR",	"25_Primula.png"],
-//	[	26,	"キャロライン・ヒラヌマ",	1,	"SR",	"26_Caroline.png"],
+	[	26,	"キャロライン・ヒラヌマ",	1,	"SR",	"26_Caroline.png"],
 	[	27,	"ユーリア・アベ",			0,	"SR",	"27_Yulia.png"],
 //	[	28,	"ヨナイ（仮）",			0,	"SR",	"00_.png"],
 
@@ -121,7 +121,7 @@
 	[	"H2-F",	28,	1,	2506,	2480,	1,	7	],
 	[	"H2-G",	28,	0,	2535,	2540,	2,	7	],
 	[	"H2-H",	28,	3,	2570,	2480,	0,	3	],
-	[	"H2-I",	29,	2,	2696,	2600,	7,	7	],
+	[	"H2-I",	29,	2,	2696,	2600,	4,	7	],
 	[	"H2-J",	34,	1,	3206,	3020,	7,	7	],
 	[	"H2-K",	35,	0,	3311,	3210,	6,	7	],
 
@@ -136,9 +136,9 @@
 	[	"N2-E",	18,	3,	1292,	800	,	2,	7	],
 	[	"N2-5",	20,	4,	1758,	1110,	3,	6	],
 	[	"N2-F",	12,	2,	775,	580,	3,	1	],
-	[	"N2-G",	12,	1,	802,	490,	7,	2	],
+	[	"N2-G",	12,	1,	802,	490,	4,	2	],
 	[	"N2-H",	13,	0,	862,	550,	7,	3	],
-	[	"N2-I",	13,	3,	985,	670,	6,	7	],
+	[	"N2-I",	13,	3,	985,	670,	6,	4	],
 	[	"N2-J",	17,	2,	1350,	1140,	0,	7	],
 	[	"N2-K",	17,	2,	1371,	1100,	2,	0	],
 
@@ -203,6 +203,7 @@ function setTableData( inTbl, inDate, inDay ){
 				var cell=rows[cnt].insertCell(-1);
 				var chtxt = chrTable[i][1] + '  ' + typeText[chrTable[i][2]] + '  ' + chrTable[i][3];
 				cell.appendChild(document.createTextNode(chtxt));
+				cell.setAttribute("colSpan", 3);
 	    	    cell.style.backgroundColor=colorCode[1];
 	    	    cell.style.color=colorCode[7];
 	    	    cell.style.fontWeight="bold";
@@ -213,6 +214,7 @@ function setTableData( inTbl, inDate, inDay ){
 				// EXP/M
 				var subtbl=[[0,""]];
 				var work = 0;
+				var gold = 0;
 				if( stageTable[j][1]!=0){
 					if( stageTable[j][5]==inDay) {
 						work = stageTable[j][3]*12;
@@ -221,6 +223,13 @@ function setTableData( inTbl, inDate, inDay ){
 					else {
 						work = stageTable[j][3];
 					}
+					if( stageTable[j][6]==inDay) {
+						gold = stageTable[j][4]*12;
+						gold = Math.round(gold / 10);
+					}
+					else {
+						gold = stageTable[j][4];
+					}
 					if( chrTable[i][2]==stageTable[j][2]){
 						work = work*12;
 						work = Math.round(work / 10);
@@ -228,8 +237,13 @@ function setTableData( inTbl, inDate, inDay ){
 					work = work / stageTable[j][1]*100;
 					work = Math.round( work );
 					work = work / 100;
+					gold = gold / stageTable[j][1]*100;
+					gold = Math.round( gold );
+					gold = gold / 100;
+					
 					subtbl[0] = work;
 					subtbl[1] = stageTable[j][0];
+					subtbl[2] = gold;
 					wktbl.push(subtbl);
 				}
 			}
@@ -239,8 +253,20 @@ function setTableData( inTbl, inDate, inDay ){
 			rows.push(inTbl.insertRow(-1));
 			{
 				var cell=rows[cnt].insertCell(-1);
-				cell.appendChild(document.createTextNode(wktbl[0][1] + ' ' + wktbl[0][0]));
+				cell.appendChild(document.createTextNode(wktbl[0][1]));
 	   		    cell.style.backgroundColor=colorCode[0];
+	   		    cell.style.textAlign="center";
+	   		    cell.style.fontWeight="bold";
+
+				var cell=rows[cnt].insertCell(-1);
+				cell.appendChild(document.createTextNode(wktbl[0][0] + 'e'));
+	   		    cell.style.backgroundColor=colorCode[3];
+	   		    cell.style.textAlign="center";
+	   		    cell.style.fontWeight="bold";
+
+				var cell=rows[cnt].insertCell(-1);
+				cell.appendChild(document.createTextNode(wktbl[0][2] + 'G'));
+	   		    cell.style.backgroundColor=colorCode[3];
 	   		    cell.style.textAlign="center";
 	   		    cell.style.fontWeight="bold";
 			}
@@ -249,20 +275,44 @@ function setTableData( inTbl, inDate, inDay ){
 			rows.push(inTbl.insertRow(-1));
 			{
 				var cell=rows[cnt].insertCell(-1);
-				cell.appendChild(document.createTextNode('    ' + wktbl[1][1] + ' ' + wktbl[1][0]));
-	   	    	cell.style.backgroundColor=colorCode[0];
-	   	    	cell.style.textAlign="center";
-	   	    	cell.style.fontWeight="bold";
+				cell.appendChild(document.createTextNode(wktbl[1][1]));
+	   		    cell.style.backgroundColor=colorCode[0];
+	   		    cell.style.textAlign="center";
+	   		    cell.style.fontWeight="bold";
+
+				var cell=rows[cnt].insertCell(-1);
+				cell.appendChild(document.createTextNode(wktbl[1][0] + 'e'));
+	   		    cell.style.backgroundColor=colorCode[3];
+	   		    cell.style.textAlign="center";
+	   		    cell.style.fontWeight="bold";
+
+				var cell=rows[cnt].insertCell(-1);
+				cell.appendChild(document.createTextNode(wktbl[1][2] + 'G'));
+	   		    cell.style.backgroundColor=colorCode[3];
+	   		    cell.style.textAlign="center";
+	   		    cell.style.fontWeight="bold";
 			}
 			cnt++;
 			// 行の追加
 			rows.push(inTbl.insertRow(-1));
 			{
 				var cell=rows[cnt].insertCell(-1);
-				cell.appendChild(document.createTextNode('    ' + wktbl[2][1] + ' ' + wktbl[2][0]));
+				cell.appendChild(document.createTextNode(wktbl[2][1]));
 	   		    cell.style.backgroundColor=colorCode[0];
 	   		    cell.style.textAlign="center";
-	   	    	cell.style.fontWeight="bold";
+	   		    cell.style.fontWeight="bold";
+
+				var cell=rows[cnt].insertCell(-1);
+				cell.appendChild(document.createTextNode(wktbl[2][0] + 'e'));
+	   		    cell.style.backgroundColor=colorCode[3];
+	   		    cell.style.textAlign="center";
+	   		    cell.style.fontWeight="bold";
+
+				var cell=rows[cnt].insertCell(-1);
+				cell.appendChild(document.createTextNode(wktbl[2][2] + 'G'));
+	   		    cell.style.backgroundColor=colorCode[3];
+	   		    cell.style.textAlign="center";
+	   		    cell.style.fontWeight="bold";
 			}
 			cnt++;
 		}
@@ -298,8 +348,8 @@ function setTableData( inTbl, inDate, inDay ){
 			var cell=rows[cnt].insertCell(-1);
 			var chtxt = nowMonth + '/' + nowDate + ' 0:00～3:59';
 			cell.appendChild(document.createTextNode(chtxt));
-			cell.setAttribute("colSpan", 2);
-	   	    cell.style.backgroundColor=colorCode[5];
+			cell.setAttribute("colSpan", 4);
+	   	    cell.style.backgroundColor=colorCode[4];
 	   	    cell.style.fontWeight="bold";
 		}
 		cnt++;
@@ -313,8 +363,8 @@ function setTableData( inTbl, inDate, inDay ){
 		var cell=rows[cnt].insertCell(-1);
 		var chtxt = nowMonth + '/' + nowDate + ' 4:00～23:59';
 		cell.appendChild(document.createTextNode(chtxt));
-		cell.setAttribute("colSpan", 2);
-		    cell.style.backgroundColor=colorCode[5];
+		cell.setAttribute("colSpan", 4);
+		    cell.style.backgroundColor=colorCode[4];
 		    cell.style.fontWeight="bold";
 	}
 	cnt++;
@@ -334,8 +384,8 @@ function setTableData( inTbl, inDate, inDay ){
 			var cell=rows[cnt].insertCell(-1);
 			var chtxt = newMonth + '/' + newDate + ' 0:00～03:59';
 			cell.appendChild(document.createTextNode(chtxt));
-			cell.setAttribute("colSpan", 2);
-			cell.style.backgroundColor=colorCode[5];
+			cell.setAttribute("colSpan", 4);
+			cell.style.backgroundColor=colorCode[4];
 			cell.style.fontWeight="bold";
 		}
 		cnt++;
