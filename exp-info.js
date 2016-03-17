@@ -122,7 +122,7 @@
 	[	"H2-G",	28,	0,	2535,	2540,	2,	7	],
 	[	"H2-H",	28,	3,	2570,	2480,	0,	3	],
 	[	"H2-I",	29,	2,	2696,	2600,	4,	7	],
-	[	"H2-J",	34,	1,	3206,	3020,	7,	7	],
+	[	"H2-J",	34,	1,	3206,	3020,	5,	7	],
 	[	"H2-K",	35,	0,	3311,	3210,	6,	7	],
 
 	[	"N2-1",	12,	2,	523,	630	,	1,	4	],
@@ -133,13 +133,13 @@
 	[	"N2-C",	15,	4,	950,	810	,	6,	2	],
 	[	"N2-4",	16,	1,	1142,	870	,	0,	3	],
 	[	"N2-D",	17,	0,	1215,	1590,	1,	7	],
-	[	"N2-E",	18,	3,	1292,	800	,	2,	7	],
+	[	"N2-E",	18,	3,	1292,	800	,	2,	5	],
 	[	"N2-5",	20,	4,	1758,	1110,	3,	6	],
 	[	"N2-F",	12,	2,	775,	580,	3,	1	],
 	[	"N2-G",	12,	1,	802,	490,	4,	2	],
-	[	"N2-H",	13,	0,	862,	550,	7,	3	],
+	[	"N2-H",	13,	0,	862,	550,	5,	3	],
 	[	"N2-I",	13,	3,	985,	670,	6,	4	],
-	[	"N2-J",	17,	2,	1350,	1140,	0,	7	],
+	[	"N2-J",	17,	2,	1350,	1140,	0,	5	],
 	[	"N2-K",	17,	2,	1371,	1100,	2,	0	],
 
 	[	"H1-1",	12,	2,	523,	990	,	7,	7	],
@@ -323,6 +323,7 @@ function setTableData( inTbl, inDate, inDay ){
     "use strict";
 	// 日付と曜日の取得
 	var nowTime = new Date();
+	var newTime = new Date();
 	var nowDate = nowTime.getDate();
 	var nowDay = nowTime.getDay();
 	var oldDate = nowDate;
@@ -371,28 +372,39 @@ function setTableData( inTbl, inDate, inDay ){
 	
 	setTableData( exptable, nowDate, nowDay);
 
-	// 翌日の0:00～3:59分（4時以降のみ表示）
-	if( nowHours > 3 ) {
-		// 翌日の日付を取得する
-		nowTime.setTime(nowTime.getTime() +60*1000*60*24);
-		var newDay=nowTime.getDay();
-		var newDate=nowTime.getDate();
-		var newMonth=nowTime.getMonth()+1;
+	// 翌日の0:00～3:59分
+	// 翌日の日付を取得する
+	newTime.setTime(newTime.getTime() +60*1000*60*24);
+	var newDay=newTime.getDay();
+	var newDate=newTime.getDate();
+	var newMonth=newTime.getMonth()+1;
 
-		rows.push(exptable.insertRow(-1));
-		{
-			var cell=rows[cnt].insertCell(-1);
-			var chtxt = newMonth + '/' + newDate + ' 0:00～03:59';
-			cell.appendChild(document.createTextNode(chtxt));
-			cell.setAttribute("colSpan", 4);
-			cell.style.backgroundColor=colorCode[4];
-			cell.style.fontWeight="bold";
-		}
-		cnt++;
-	
-		setTableData( exptable, nowDate, newDay);
-
+	rows.push(exptable.insertRow(-1));
+	{
+		var cell=rows[cnt].insertCell(-1);
+		var chtxt = newMonth + '/' + newDate + ' 0:00～03:59';
+		cell.appendChild(document.createTextNode(chtxt));
+		cell.setAttribute("colSpan", 4);
+		cell.style.backgroundColor=colorCode[4];
+		cell.style.fontWeight="bold";
 	}
+	cnt++;
+	
+	setTableData( exptable, nowDate, newDay);
+
+	// 翌日の4:00～23:59分
+	rows.push(exptable.insertRow(-1));
+	{
+		var cell=rows[cnt].insertCell(-1);
+		var chtxt = newMonth + '/' + newDate + ' 4:00～23:59';
+		cell.appendChild(document.createTextNode(chtxt));
+		cell.setAttribute("colSpan", 4);
+		cell.style.backgroundColor=colorCode[4];
+		cell.style.fontWeight="bold";
+	}
+	cnt++;
+
+	setTableData( exptable, newDate, newDay);
 
 	// テーブルへの登録
     document.getElementById("exp-info").appendChild(exptable);
