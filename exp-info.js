@@ -248,7 +248,7 @@ function setTableData( inTbl, inDate, inDay ){
 				imgTag.src = "icon/" + chrTable[i][4];
 				imgTag.width = 90;
 				imgTag.height = 90;
-				celchr.setAttribute("rowSpan", 4);
+				celchr.setAttribute("rowSpan", 6);
 				celchr.appendChild(imgTag);
 
 				var cell=rows[cnt].insertCell(-1);
@@ -361,6 +361,50 @@ function setTableData( inTbl, inDate, inDay ){
 
 				var cell=rows[cnt].insertCell(-1);
 				cell.appendChild(document.createTextNode(wktbl[2][2] + 'G'));
+	   		    cell.style.backgroundColor=colorCode[3];
+	   		    cell.style.textAlign="center";
+	   		    cell.style.fontWeight="bold";
+			}
+			cnt++;
+			// 行の追加
+			rows.push(inTbl.insertRow(-1));
+			{
+				var cell=rows[cnt].insertCell(-1);
+				cell.appendChild(document.createTextNode(wktbl[3][1]));
+	   		    cell.style.backgroundColor=colorCode[0];
+	   		    cell.style.textAlign="center";
+	   		    cell.style.fontWeight="bold";
+
+				var cell=rows[cnt].insertCell(-1);
+				cell.appendChild(document.createTextNode(wktbl[3][0] + 'e'));
+	   		    cell.style.backgroundColor=colorCode[3];
+	   		    cell.style.textAlign="center";
+	   		    cell.style.fontWeight="bold";
+
+				var cell=rows[cnt].insertCell(-1);
+				cell.appendChild(document.createTextNode(wktbl[3][2] + 'G'));
+	   		    cell.style.backgroundColor=colorCode[3];
+	   		    cell.style.textAlign="center";
+	   		    cell.style.fontWeight="bold";
+			}
+			cnt++;
+			// 行の追加
+			rows.push(inTbl.insertRow(-1));
+			{
+				var cell=rows[cnt].insertCell(-1);
+				cell.appendChild(document.createTextNode(wktbl[4][1]));
+	   		    cell.style.backgroundColor=colorCode[0];
+	   		    cell.style.textAlign="center";
+	   		    cell.style.fontWeight="bold";
+
+				var cell=rows[cnt].insertCell(-1);
+				cell.appendChild(document.createTextNode(wktbl[4][0] + 'e'));
+	   		    cell.style.backgroundColor=colorCode[3];
+	   		    cell.style.textAlign="center";
+	   		    cell.style.fontWeight="bold";
+
+				var cell=rows[cnt].insertCell(-1);
+				cell.appendChild(document.createTextNode(wktbl[4][2] + 'G'));
 	   		    cell.style.backgroundColor=colorCode[3];
 	   		    cell.style.textAlign="center";
 	   		    cell.style.fontWeight="bold";
