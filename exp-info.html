@@ -43,6 +43,7 @@
 	</select>
 	<select id="stagesel" name="stagesel">
 		<option value="90" selected>全難易度</option>
+		<option value="8">T2まで</option>
 		<option value="7">N4まで</option>
 		<option value="6">H3まで</option>
 		<option value="5">N3まで</option>
@@ -54,15 +55,15 @@
 	<input type=button value="再表示" onclick="ResetTable();">
 	</form>
 	<hr>
+	<b><font color=red>時間不足でデータが足りていないダス……</font></b><br>
+	<b><font color=red>H4はGold未確認のため暫定で０G</font></b><br>
+	<hr>
 	<h3>日替わりキャラ</h3>
 	<div id="exp-info"></div>
 	<hr>
 	<h3>ステージ一覧</h3>
 	<font size=2>
 	<b><font color=red>赤数字：日替わりボーナス個所</font></b><br>
-	<b><font color=red>初級H1、中級N2、上級H2、まつりH3、</font></b><br>
-	<b><font color=red>ちまつりT2相当で暫定的に絞り込み設定</font></b><br>
-	<b><font color=red>臨時は1.2倍が無いので注意（金銀砦は有り）</font></b>
 	<div id="stage-info"></div>
 	</font>
 	<hr>
@@ -72,9 +73,10 @@
 	<hr>
 	<a href="./index.html" target="_top">お品書きに戻る（注：政マニも閉じます）</a>
 	<hr>
+	2016/5/12 カルロッタ・スズキを追加<br>
+	　　　　N4,H4を暫定追加<br>
+	　　　　闘弌治宝戦挙削除<br>
 	2016/5/3 N4,闘弌治宝戦挙対応<br>
-	2016/4/29 未来指定／難易度絞り込み対応<br>
-	2016/4/27 ミレイア・ヨナイを追加<br>
 </body>
 	<script type="text/javascript" src="exp-info.js"></script>
 </html>
