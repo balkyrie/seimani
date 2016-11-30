@@ -464,21 +464,21 @@ function setTableData( inTbl, inDate, inDay ){
 				}
 				if( stageTable[j][1]!=0){
 					if( stageTable[j][5]==inDay) {
-						work = stageTable[j][3]*12;
+						work = stageTable[j][3]*13;
 						work = Math.round(work / 10);
 					}
 					else {
 						work = stageTable[j][3];
 					}
 					if( stageTable[j][6]==inDay) {
-						gold = stageTable[j][4]*12;
+						gold = stageTable[j][4]*13;
 						gold = Math.round(gold / 10);
 					}
 					else {
 						gold = stageTable[j][4];
 					}
 					if( chrTable[i][2]==stageTable[j][2]){
-						work = work*12;
+						work = work*13;
 						work = Math.round(work / 10);
 					}
 					work = work / stageTable[j][1]*100;
