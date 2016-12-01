@@ -4,86 +4,86 @@
 	// 対象日、キャラ名、分類、レア度
 	// 分類,0:近接,1:射撃,2:魔法,3:重装,4:なし
 	var chrTable=[
-//	[	0,	"ナイカク",					0,	"SR",	"00_Naikaku.png"],
-//	[	0,	"シノブ・イチハシ",			0,	"SR",	"00_Shinobu.png"],
-	[	1,	"ヒラリィ・イトウ",			0,	"SR",	"01_Hillary.png"],
-	[	2,	"キティ・クローダー",		0,	"SR",	"02_Kitty.png"],
-	[	3,	"サラ・サンジョウ",			2,	"SR",	"03_Sarah.png"],
-	[	4,	"アリシア・ヤマータ",		0,	"SR",	"04_Alicia.png"],
-	[	5,	"マーシャ・マツカタ",		1,	"R",	"05_Marsha.png"],
-	[	6,	"シェロブ・ビッグベア",		1,	"R",	"06_Sherob.png"],
-	[	7,	"キンバリー・サイオンジ",	2,	"R",	"07_Kimberly.png"],
-	[	8,	"タルア・カツラ",			0,	"SR",	"08_taluah.png"],
-	[	9,	"コーデリア・ヤマモト",		1,	"SR",	"09_Cordelia.png"],
-	[	10,	"マセッタ・テラウチ",		0,	"R",	"10_Musetta.png"],
-	[	11,	"トリクシィ・ハラ",			2,	"SR",	"11_Trixi.png"],
-	[	12,	"コリス・ウチダ",			0,	"R",	"12_Coris.png"],
-	[	13,	"コレット・タカハシ",		3,	"SR",	"13_Colette.png"],
-	[	14,	"サブリナ・カトー",			1,	"R",	"14_Sabrina.png"],
-	[	15,	"ケイト・キヨーラ",			0,	"R",	"15_Cate.png"],
-	[	16,	"ティターニィ・カトー",		1,	"R",	"16_Titany.png"],
-	[	17,	"レイシィ・ワカツキ",		3,	"R",	"17_Leshy.png"],
-	[	18,	"キララ・タナカ",			1,	"SR",	"18_Kirara.png"],
-	[	19,	"オフェーリア・ハマグチ",	2,	"SR",	"19_Ophelia.png"],
-	[	20,	"ティアラ・イヌカイ",		1,	"SR",	"20_Tiara.png"],
-	[	21,	"マロン・サイトウ",			2,	"R",	"21_Maron.png"],
-	[	22,	"ケイシア・オカダ",			2,	"SR",	"22_Keyshia.png"],
-	[	23,	"コニィ・ヒロタ",			2,	"R",	"23_Conny.png"],
-	[	24,	"リン・ハヤシ",				0,	"SR",	"24_Rynn.png"],
-	[	25,	"プリミュラ・コノエ",		2,	"SR",	"25_Primula.png"],
-	[	26,	"キャロライン・ヒラヌマ",	1,	"SR",	"26_Caroline.png"],
-	[	27,	"ユーリア・アベ",			0,	"SR",	"27_Yulia.png"],
-	[	28,	"ミレイア・ヨナイ",			2,	"SR",	"28_Mireia.png"],
+//	[	0,	0,	"ナイカク",					0,	"SR",	"00_Naikaku.png"],
+//	[	0,	0,	"シノブ・イチハシ",			0,	"SR",	"00_Shinobu.png"],
+	[	1,	0,	"ヒラリィ・イトウ",			0,	"SR",	"01_Hillary.png"],
+	[	2,	0,	"キティ・クローダー",		0,	"SR",	"02_Kitty.png"],
+	[	3,	0,	"サラ・サンジョウ",			2,	"SR",	"03_Sarah.png"],
+	[	4,	0,	"アリシア・ヤマータ",		0,	"SR",	"04_Alicia.png"],
+	[	5,	0,	"マーシャ・マツカタ",		1,	"R",	"05_Marsha.png"],
+	[	6,	0,	"シェロブ・ビッグベア",		1,	"R",	"06_Sherob.png"],
+	[	7,	0,	"キンバリー・サイオンジ",	2,	"R",	"07_Kimberly.png"],
+	[	8,	0,	"タルア・カツラ",			0,	"SR",	"08_taluah.png"],
+	[	9,	0,	"コーデリア・ヤマモト",		1,	"SR",	"09_Cordelia.png"],
+	[	10,	0,	"マセッタ・テラウチ",		0,	"R",	"10_Musetta.png"],
+	[	11,	0,	"トリクシィ・ハラ",			2,	"SR",	"11_Trixi.png"],
+	[	12,	0,	"コリス・ウチダ",			0,	"R",	"12_Coris.png"],
+	[	13,	0,	"コレット・タカハシ",		3,	"SR",	"13_Colette.png"],
+	[	14,	1,	"サブリナ・カトー",			1,	"R",	"14_Sabrina.png"],
+	[	15,	0,	"ケイト・キヨーラ",			0,	"R",	"15_Cate.png"],
+	[	16,	0,	"ティターニィ・カトー",		1,	"R",	"16_Titany.png"],
+	[	17,	0,	"レイシィ・ワカツキ",		3,	"R",	"17_Leshy.png"],
+	[	18,	0,	"キララ・タナカ",			1,	"SR",	"18_Kirara.png"],
+	[	19,	1,	"オフェーリア・ハマグチ",	2,	"SR",	"19_Ophelia.png"],
+	[	20,	0,	"ティアラ・イヌカイ",		1,	"SR",	"20_Tiara.png"],
+	[	21,	0,	"マロン・サイトウ",			2,	"R",	"21_Maron.png"],
+	[	22,	0,	"ケイシア・オカダ",			2,	"SR",	"22_Keyshia.png"],
+	[	23,	0,	"コニィ・ヒロタ",			2,	"R",	"23_Conny.png"],
+	[	24,	0,	"リン・ハヤシ",				0,	"SR",	"24_Rynn.png"],
+	[	25,	0,	"プリミュラ・コノエ",		2,	"SR",	"25_Primula.png"],
+	[	26,	0,	"キャロライン・ヒラヌマ",	1,	"SR",	"26_Caroline.png"],
+	[	27,	0,	"ユーリア・アベ",			0,	"SR",	"27_Yulia.png"],
+	[	28,	0,	"ミレイア・ヨナイ",			2,	"SR",	"28_Mireia.png"],
 
-	[	1,	"エリカ",					0,	"N",	"85_Elika.png"],
-	[	2,	"エリナ",					0,	"N",	"86_Elina.png"],
-	[	3,	"エリサ",					0,	"N",	"87_Elisa.png"],
-	[	4,	"エレナ",					3,	"N",	"88_Elena.png"],
-	[	5,	"アオバ",					1,	"N",	"89_Aoba.png"],
-	[	6,	"ワカバ",					1,	"N",	"90_Wakaba.png"],
-	[	7,	"クレハ",					1,	"N",	"91_Kureha.png"],
-	[	8,	"マツバ",					1,	"N",	"92_Matsuba.png"],
-	[	9,	"サン",						2,	"N",	"93_Sann.png"],
-	[	10,	"シュウ",					2,	"N",	"94_Syuu.png"],
-	[	11,	"シホ",						2,	"N",	"95_Shiho.png"],
-	[	12,	"リッポ",					2,	"N",	"96_Rippo.png"],
+	[	1,	0,	"エリカ",					0,	"N",	"85_Elika.png"],
+	[	2,	0,	"エリナ",					0,	"N",	"86_Elina.png"],
+	[	3,	0,	"エリサ",					0,	"N",	"87_Elisa.png"],
+	[	4,	0,	"エレナ",					3,	"N",	"88_Elena.png"],
+	[	5,	0,	"アオバ",					1,	"N",	"89_Aoba.png"],
+	[	6,	0,	"ワカバ",					1,	"N",	"90_Wakaba.png"],
+	[	7,	0,	"クレハ",					1,	"N",	"91_Kureha.png"],
+	[	8,	0,	"マツバ",					1,	"N",	"92_Matsuba.png"],
+	[	9,	0,	"サン",						2,	"N",	"93_Sann.png"],
+	[	10,	0,	"シュウ",					2,	"N",	"94_Syuu.png"],
+	[	11,	0,	"シホ",						2,	"N",	"95_Shiho.png"],
+	[	12,	0,	"リッポ",					2,	"N",	"96_Rippo.png"],
 
-	[	13,	"ビッキー・トウジョウ",			3,	"SR",	"41_Bikky.png"],
-	[	14,	"クレア・コイソ",			2,	"SR",	"42_Crea.png"],
-	[	15,	"カルロッタ・スズキ",			1,	"SR",	"43_Carlotta.png"],
-	[	16,	"ﾆｺﾗｺﾎﾟｰﾛｩ・ﾋｶﾞｼｸﾆ",		2,	"SR",	"44_Nikolakopoulou.png"],
-	[	17,	"イシュリーヌ・シデハラ",		0,	"SR",	"45_Ishrene.png"],
-	[	18,	"ジル・ヨシダ",			2,	"SR",	"46_Zill.png"],
+	[	13,	0,	"ビッキー・トウジョウ",			3,	"SR",	"41_Bikky.png"],
+	[	14,	0,	"クレア・コイソ",			2,	"SR",	"42_Crea.png"],
+	[	15,	0,	"カルロッタ・スズキ",			1,	"SR",	"43_Carlotta.png"],
+	[	16,	0,	"ﾆｺﾗｺﾎﾟｰﾛｩ・ﾋｶﾞｼｸﾆ",		2,	"SR",	"44_Nikolakopoulou.png"],
+	[	17,	0,	"イシュリーヌ・シデハラ",		0,	"SR",	"45_Ishrene.png"],
+	[	18,	0,	"ジル・ヨシダ",			2,	"SR",	"46_Zill.png"],
 
 
-	[	17,	"トルーディ・オオクボ",		1,	"SR",	"47_Trudy.png"],
-	[	16,	"モリー・サイゴウ",		3,	"SR",	"48_Morry.png"],
-	[	18,	"ダーシー・キド",		0,	"SR",	"50_Darcy.png"],
-	[	19,	"ツグミ・サイゴウ",		3,	"SR",	"54_Tsugumi.png"],
-	[	20,	"マクシーン・ヤマダ",		2,	"SR",	"56_Mcseen.png"],
-	[	21,	"マージョリー・オオムラ",		1,	"SR",	"60_Marjorie.png"],
+	[	17,	0,	"トルーディ・オオクボ",		1,	"SR",	"47_Trudy.png"],
+	[	16,	0,	"モリー・サイゴウ",		3,	"SR",	"48_Morry.png"],
+	[	18,	0,	"ダーシー・キド",		0,	"SR",	"50_Darcy.png"],
+	[	19,	1,	"ツグミ・サイゴウ",		3,	"SR",	"54_Tsugumi.png"],
+	[	20,	0,	"マクシーン・ヤマダ",		2,	"SR",	"56_Mcseen.png"],
+	[	21,	0,	"マージョリー・オオムラ",		1,	"SR",	"60_Marjorie.png"],
 
-	[	1,	"タイス・イタガキ",		3,	"SR",	"49_Tais.png"],
-	[	2,	"デメトリア・イワクラ",		2,	"SR",	"52_Demetoria.png"],
-	[	3,	"アシュリー・カツ",		0,	"SR",	"51_Asury.png"],
-	[	4,	"カーラ・イノウエ",		1,	"SR",	"53_Khara.png"],
-	[	5,	"ジェニファー・エトウ",		0,	"SR",	"55_Jennifer.png"],
-	[	6,	"タティアナ・エノモト",		0,	"SR",	"59_Tatiana.png"],
-	[	8,	"シャーロット・ゴトウ",		1,	"SR",	"58_Sharlotte.png"],
-	[	9,	"ビアトリス・シマヅ",		2,	"SR",	"57_Beatrice.png"],
+	[	1,	0,	"タイス・イタガキ",		3,	"SR",	"49_Tais.png"],
+	[	2,	0,	"デメトリア・イワクラ",		2,	"SR",	"52_Demetoria.png"],
+	[	3,	0,	"アシュリー・カツ",		0,	"SR",	"51_Asury.png"],
+	[	4,	0,	"カーラ・イノウエ",		1,	"SR",	"53_Khara.png"],
+	[	5,	0,	"ジェニファー・エトウ",		0,	"SR",	"55_Jennifer.png"],
+	[	6,	0,	"タティアナ・エノモト",		0,	"SR",	"59_Tatiana.png"],
+	[	8,	0,	"シャーロット・ゴトウ",		1,	"SR",	"58_Sharlotte.png"],
+	[	9,	0,	"ビアトリス・シマヅ",		2,	"SR",	"57_Beatrice.png"],
 		
-	[	29,	"全",					0,	"SR+N",	"97_SN_all.png"],
-	[	29,	"全",					1,	"SR+N",	"97_SS_all.png"],
-	[	29,	"全",					2,	"SR+N",	"97_SM_all.png"],
-	[	29,	"全",					3,	"SR+N",	"97_SJ_all.png"],
-	[	30,	"全",					0,	"R+N",	"98_RN_all.png"],
-	[	30,	"全",					1,	"R+N",	"98_RS_all.png"],
-	[	30,	"全",					2,	"R+N",	"98_RM_all.png"],
-	[	30,	"全",					3,	"R+N",	"98_RJ_all.png"],
-	[	31,	"全",					0,	"N",	"99_NN_all.png"],
-	[	31,	"全",					1,	"N",	"99_NS_all.png"],
-	[	31,	"全",					2,	"N",	"99_NM_all.png"],
-	[	31,	"全",					3,	"N",	"99_NJ_all.png"],
+	[	29,	0,	"全",					0,	"SR+N",	"97_SN_all.png"],
+	[	29,	0,	"全",					1,	"SR+N",	"97_SS_all.png"],
+	[	29,	0,	"全",					2,	"SR+N",	"97_SM_all.png"],
+	[	29,	0,	"全",					3,	"SR+N",	"97_SJ_all.png"],
+	[	30,	0,	"全",					0,	"R+N",	"98_RN_all.png"],
+	[	30,	0,	"全",					1,	"R+N",	"98_RS_all.png"],
+	[	30,	0,	"全",					2,	"R+N",	"98_RM_all.png"],
+	[	30,	0,	"全",					3,	"R+N",	"98_RJ_all.png"],
+	[	31,	0,	"全",					0,	"N",	"99_NN_all.png"],
+	[	31,	0,	"全",					1,	"N",	"99_NS_all.png"],
+	[	31,	0,	"全",					2,	"N",	"99_NM_all.png"],
+	[	31,	0,	"全",					3,	"N",	"99_NJ_all.png"],
 	];
 
 	// ステージごとのデータ（選挙区ごとの色変え処理用に16ステージ単位で記載すること）
@@ -428,21 +428,21 @@
 
 function setTableData( inTbl, inDate, inDay ){
 	for(var i=0;i<chrTable.length;i++){
-		if( chrTable[i][0] == inDate) {
+		if( (chrTable[i][0] == inDate) || (chrTable[i][1] == inDate) ) {
 			// 行の追加
 			rows.push(inTbl.insertRow(-1));
 			// キャラ情報の追加
 			{
 				var celchr=rows[cnt].insertCell(-1);
 				var imgTag = document.createElement("img");
-				imgTag.src = "icon/" + chrTable[i][4];
+				imgTag.src = "icon/" + chrTable[i][5];
 				imgTag.width = 90;
 				imgTag.height = 90;
 				celchr.setAttribute("rowSpan", 6);
 				celchr.appendChild(imgTag);
 
 				var cell=rows[cnt].insertCell(-1);
-				var chtxt = chrTable[i][1] + '  ' + typeText[chrTable[i][2]] + '  ' + chrTable[i][3];
+				var chtxt = chrTable[i][2] + '  ' + typeText[chrTable[i][3]] + '  ' + chrTable[i][4];
 				cell.appendChild(document.createTextNode(chtxt));
 				cell.setAttribute("colSpan", 3);
 				cell.style.backgroundColor=colorCode[1];
@@ -477,7 +477,7 @@ function setTableData( inTbl, inDate, inDay ){
 					else {
 						gold = stageTable[j][4];
 					}
-					if( chrTable[i][2]==stageTable[j][2]){
+					if( chrTable[i][3]==stageTable[j][2]){
 						work = work*13;
 						work = Math.round(work / 10);
 					}
