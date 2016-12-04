@@ -13,7 +13,7 @@
 	[	5,	0,	"マーシャ・マツカタ",		1,	"R",	"05_Marsha.png"],
 	[	6,	0,	"シェロブ・ビッグベア",		1,	"R",	"06_Sherob.png"],
 	[	7,	0,	"キンバリー・サイオンジ",	2,	"R",	"07_Kimberly.png"],
-	[	8,	0,	"タルア・カツラ",			0,	"SR",	"08_taluah.png"],
+	[	8,	4,	"タルア・カツラ",			0,	"SR",	"08_taluah.png"],
 	[	9,	0,	"コーデリア・ヤマモト",		1,	"SR",	"09_Cordelia.png"],
 	[	10,	0,	"マセッタ・テラウチ",		0,	"R",	"10_Musetta.png"],
 	[	11,	0,	"トリクシィ・ハラ",			2,	"SR",	"11_Trixi.png"],
@@ -25,7 +25,7 @@
 	[	17,	0,	"レイシィ・ワカツキ",		3,	"R",	"17_Leshy.png"],
 	[	18,	0,	"キララ・タナカ",			1,	"SR",	"18_Kirara.png"],
 	[	19,	1,	"オフェーリア・ハマグチ",	2,	"SR",	"19_Ophelia.png"],
-	[	20,	0,	"ティアラ・イヌカイ",		1,	"SR",	"20_Tiara.png"],
+	[	20,	4,	"ティアラ・イヌカイ",		1,	"SR",	"20_Tiara.png"],
 	[	21,	2,	"マロン・サイトウ",			2,	"R",	"21_Maron.png"],
 	[	22,	0,	"ケイシア・オカダ",			2,	"SR",	"22_Keyshia.png"],
 	[	23,	0,	"コニィ・ヒロタ",			2,	"R",	"23_Conny.png"],
@@ -71,6 +71,7 @@
 	[	6,	0,	"タティアナ・エノモト",		0,	"SR",	"59_Tatiana.png"],
 	[	8,	0,	"シャーロット・ゴトウ",		1,	"SR",	"58_Sharlotte.png"],
 	[	9,	2,	"ビアトリス・シマヅ",		2,	"SR",	"57_Beatrice.png"],
+	[	0,	0,	"チェリッシュ・ヤマオカ",		0,	"SR",	"61_Cherish.png"],
 		
 	[	29,	0,	"全",					0,	"SR+N",	"97_SN_all.png"],
 	[	29,	0,	"全",					1,	"SR+N",	"97_SS_all.png"],
@@ -423,14 +424,28 @@
 	var typeText=["近接","射撃","魔法","重装","なし"];
 	var rows=[];
 	var cnt=0;
-	var colorCode=["#B0C4DE","#E0E0E0","#C0C0FF","#E0E0FF","#C0FFC0","#E0FFE0", "#FF4040", "#4040FF", "#FF8080", "#FFC0C0"];
-
+	var colorCode=["#B0C4DE","#E0E0E0","#C0C0FF","#E0E0FF","#C0FFC0","#E0FFE0", "#FF4040", "#4040FF", "#FF8080", "#FFC0C0","#C0C0FF","#C0FFC0","#FFC0C0","#FFFFC0"];
+	var colorChange=[6, 0, 2];
 
 function setTableData( inTbl, inDate, inDay ){
+	var selectrare = document.inputform.srare.value;
+	var selectstage = document.inputform.stagesel.value;
+
 	for(var i=0;i<chrTable.length;i++){
+		if(( selectrare==1 ) & ( chrTable[i][4] != "N" ) ) {
+			continue;
+		}
+		if(( selectrare==2 ) & ( chrTable[i][4] != "R" ) ) {
+			continue;
+		}
+		if(( selectrare==3 ) & ( chrTable[i][4] != "SR" ) ) {
+			continue;
+		}
+		
 		if( (chrTable[i][0] == inDate) || (chrTable[i][1] == inDate) ) {
 			// 行の追加
 			rows.push(inTbl.insertRow(-1));
+			
 			// キャラ情報の追加
 			{
 				var celchr=rows[cnt].insertCell(-1);
@@ -445,17 +460,27 @@ function setTableData( inTbl, inDate, inDay ){
 				var chtxt = chrTable[i][2] + '  ' + typeText[chrTable[i][3]] + '  ' + chrTable[i][4];
 				cell.appendChild(document.createTextNode(chtxt));
 				cell.setAttribute("colSpan", 3);
-				cell.style.backgroundColor=colorCode[1];
+				if( chrTable[i][3] == 0) {
+					cell.style.backgroundColor=colorCode[10];
+				}
+				if( chrTable[i][3] == 1) {
+					cell.style.backgroundColor=colorCode[11];
+				}
+				if( chrTable[i][3] == 2) {
+					cell.style.backgroundColor=colorCode[12];
+				}
+				if( chrTable[i][3] == 3) {
+					cell.style.backgroundColor=colorCode[13];
+				}
 				cell.style.color=colorCode[7];
 				cell.style.fontWeight="bold";
 			}
 
-			var selectstage = document.inputform.stagesel.value;
 			var wktbl=[[0,"N0-0"]];
 			
 			for( var j=0; j<stageTable.length;j++){
 				// EXP/M
-				var subtbl=[[0,""]];
+				var subtbl=[[0,"",0,0]];
 				var work = 0;
 				var gold = 0;
 				
@@ -491,6 +516,7 @@ function setTableData( inTbl, inDate, inDay ){
 					subtbl[0] = work;
 					subtbl[1] = stageTable[j][0];
 					subtbl[2] = gold;
+					subtbl[3] = j;
 					wktbl.push(subtbl);
 				}
 			}
@@ -499,14 +525,15 @@ function setTableData( inTbl, inDate, inDay ){
 			// 行の追加
 			rows.push(inTbl.insertRow(-1));
 			{
+				var pcolor = colorChange[ Math.floor(wktbl[0][3] / 16 ) % 3 ] + 2;
 				var cell=rows[cnt].insertCell(-1);
 				cell.appendChild(document.createTextNode(wktbl[0][1]));
-				cell.style.backgroundColor=colorCode[0];
+				cell.style.backgroundColor=colorCode[pcolor ];
 				cell.style.textAlign="center";
 				cell.style.fontWeight="bold";
 
 				var cell=rows[cnt].insertCell(-1);
-				cell.appendChild(document.createTextNode(wktbl[0][0] + 'e'));
+				cell.appendChild(document.createTextNode(wktbl[0][0] + 'exp'));
 				cell.style.backgroundColor=colorCode[3];
 				cell.style.textAlign="center";
 				cell.style.fontWeight="bold";
@@ -521,14 +548,15 @@ function setTableData( inTbl, inDate, inDay ){
 			// 行の追加
 			rows.push(inTbl.insertRow(-1));
 			{
+				var pcolor = colorChange[ Math.floor(wktbl[1][3] / 16 ) % 3 ] + 2;
 				var cell=rows[cnt].insertCell(-1);
 				cell.appendChild(document.createTextNode(wktbl[1][1]));
-				cell.style.backgroundColor=colorCode[0];
+				cell.style.backgroundColor=colorCode[pcolor];
 				cell.style.textAlign="center";
 				cell.style.fontWeight="bold";
 
 				var cell=rows[cnt].insertCell(-1);
-				cell.appendChild(document.createTextNode(wktbl[1][0] + 'e'));
+				cell.appendChild(document.createTextNode(wktbl[1][0] + 'exp'));
 				cell.style.backgroundColor=colorCode[3];
 				cell.style.textAlign="center";
 				cell.style.fontWeight="bold";
@@ -543,14 +571,15 @@ function setTableData( inTbl, inDate, inDay ){
 			// 行の追加
 			rows.push(inTbl.insertRow(-1));
 			{
+				var pcolor = colorChange[ Math.floor(wktbl[2][3] / 16 ) % 3 ] + 2;
 				var cell=rows[cnt].insertCell(-1);
 				cell.appendChild(document.createTextNode(wktbl[2][1]));
-				cell.style.backgroundColor=colorCode[0];
+				cell.style.backgroundColor=colorCode[pcolor];
 				cell.style.textAlign="center";
 				cell.style.fontWeight="bold";
 
 				var cell=rows[cnt].insertCell(-1);
-				cell.appendChild(document.createTextNode(wktbl[2][0] + 'e'));
+				cell.appendChild(document.createTextNode(wktbl[2][0] + 'exp'));
 				cell.style.backgroundColor=colorCode[3];
 				cell.style.textAlign="center";
 				cell.style.fontWeight="bold";
@@ -565,14 +594,15 @@ function setTableData( inTbl, inDate, inDay ){
 			// 行の追加
 			rows.push(inTbl.insertRow(-1));
 			{
+				var pcolor = colorChange[ Math.floor(wktbl[3][3] / 16 ) % 3 ] + 2;
 				var cell=rows[cnt].insertCell(-1);
 				cell.appendChild(document.createTextNode(wktbl[3][1]));
-				cell.style.backgroundColor=colorCode[0];
+				cell.style.backgroundColor=colorCode[pcolor];
 				cell.style.textAlign="center";
 				cell.style.fontWeight="bold";
 
 				var cell=rows[cnt].insertCell(-1);
-				cell.appendChild(document.createTextNode(wktbl[3][0] + 'e'));
+				cell.appendChild(document.createTextNode(wktbl[3][0] + 'exp'));
 				cell.style.backgroundColor=colorCode[3];
 				cell.style.textAlign="center";
 				cell.style.fontWeight="bold";
@@ -587,14 +617,15 @@ function setTableData( inTbl, inDate, inDay ){
 			// 行の追加
 			rows.push(inTbl.insertRow(-1));
 			{
+				var pcolor = colorChange[ Math.floor(wktbl[4][3] / 16 ) % 3 ] + 2;
 				var cell=rows[cnt].insertCell(-1);
 				cell.appendChild(document.createTextNode(wktbl[4][1]));
-				cell.style.backgroundColor=colorCode[0];
+				cell.style.backgroundColor=colorCode[pcolor];
 				cell.style.textAlign="center";
 				cell.style.fontWeight="bold";
 
 				var cell=rows[cnt].insertCell(-1);
-				cell.appendChild(document.createTextNode(wktbl[4][0] + 'e'));
+				cell.appendChild(document.createTextNode(wktbl[4][0] + 'exp'));
 				cell.style.backgroundColor=colorCode[3];
 				cell.style.textAlign="center";
 				cell.style.fontWeight="bold";
