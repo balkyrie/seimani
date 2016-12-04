@@ -7,8 +7,9 @@
 </head>
 <body>
 	<h3>表示条件設定</h3>
+	<span style="line-height:150%">
 	<form name="inputform">
-	<select id="dayplus" name="dayplus">
+	日時：<select id="dayplus" name="dayplus">
 		<option value="0" selected>今日</option>
 		<option value="1">＋１日</option>
 		<option value="2">＋２日</option>
@@ -41,7 +42,7 @@
 		<option value="29">＋２９日</option>
 		<option value="30">＋３０日</option>
 	</select>
-	<select id="stagesel" name="stagesel">
+	難易度：<select id="stagesel" name="stagesel">
 		<option value="90" selected>全難易度</option>
 		<option value="13">N6まで</option>
 		<option value="12">H5まで</option>
@@ -56,12 +57,21 @@
 		<option value="3">N2まで</option>
 		<option value="2">H1まで</option>
 		<option value="1">N1まで</option>
+	</select><br>
+	政霊：<select id="srare" name="srare">
+		<option value="0" selected>全政霊</option>
+		<option value="3">SR政霊のみ</option>
+		<option value="2">R政霊のみ</option>
+		<option value="1">N政霊のみ</option>
 	</select>
-	<input type=button value="再表示" onclick="ResetTable();">
+	　<input type=button value="再表示" onclick="ResetTable();">
 	</form>
+	</span>
 	<hr>
 	<h3>日替わりキャラ</h3>
+	<font size=2>
 	<div id="exp-info"></div>
+	</font>
 	<hr>
 	<h3>ステージ一覧</h3>
 	<font size=2>
@@ -76,8 +86,8 @@
 	<hr>
 	<a href="./index.html" target="_top">お品書きに戻る（注：政マニも閉じます）</a>
 	<hr>
+	2016/12/4 レア度による政霊絞り込みを追加<br>
 	2016/12/1 ボーナス倍率変更に対応<br>
-	2016/11/21 マージョリー・オオムラを追加<br>
 </body>
 	<script type="text/javascript" src="exp-info.js"></script>
 </html>
